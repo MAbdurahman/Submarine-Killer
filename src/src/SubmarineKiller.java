@@ -68,7 +68,7 @@ public class SubmarineKiller extends JPanel {
     @SuppressWarnings("OverridableMethodCallInConstructor")
     public SubmarineKiller() {
     	screenWidth = (int) getWidth();
-    	screenHeight = (int) getHeight(); 
+    	screenHeight = (int) getHeight();
     	numberOfCharges = 25;
     	/*
     	 * actionListener - Responds to and defines the action taken each time the timer fires
@@ -780,7 +780,7 @@ public class SubmarineKiller extends JPanel {
         frame.setContentPane(game);
         frame.setBounds(0, 0, screenWidth, screenHeight);
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-        frame.setResizable(false);//User cannot change the size of the frame
+        frame.setResizable(true);//User cannot change the size of the frame
         frame.setVisible(true);
     }//end of the main Method
 } // end of the SubmarineKiller Class
