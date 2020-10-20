@@ -79,7 +79,7 @@ public class SubmarineKiller extends JPanel {
         	 * actionPerformed Method - Overrides the actionPerformed method of the ActionListener
                  * Interface, and redefines it for the action taken each time the timer fires, which
         	 * is updating the different objects of the game and repainting them.
-        	 * @param ActionEvent - the action event of the timer firing
+        	 * @param ae - the ActionEvent of the timer firing
         	 */
                 @Override
         	synchronized public void actionPerformed(ActionEvent ae) {
@@ -104,7 +104,7 @@ public class SubmarineKiller extends JPanel {
         	/**
         	 * mousePressed Method - Requests focus, stops the Battle Time Theme, begins
         	 * the submarine sonar, and ocean waves sounds
-        	 * @param MouseEvent - the event of pressing the mouse
+        	 * @param me - the MouseEvent of pressing the mouse
         	 */  
                 @Override
         	synchronized public void mousePressed(MouseEvent me) {
@@ -120,7 +120,7 @@ public class SubmarineKiller extends JPanel {
             /**
              * focusGained Method - Starts the timer when the panel gains input focus and repaints
              * the panel.
-             * @param FocusEvent - the event of gaining focus
+             * @param fe - the FocusEvent of gaining focus
              */
             @Override
             public void focusGained(FocusEvent fe) {
@@ -130,7 +130,7 @@ public class SubmarineKiller extends JPanel {
             /**
              * focusLost Method - Stops the timer when the panel looses input focus and repaints
              * the panel.
-             * @param FocusEvent - the event of loosing focus
+             * @param fe - the FocusEvent of loosing focus
              */
             @Override
             public void focusLost(FocusEvent fe) {
@@ -147,7 +147,7 @@ public class SubmarineKiller extends JPanel {
         	 * keyPressed Method - Responds to the key pressed events of the panel.  Only the left,
         	 * right, and down arrow keys have any effect.  The left and right arrow keys move the
         	 * battleship, while the down arrow key releases the depthCharge.
-        	 * @param KeyEvent - the event of pressing the key
+        	 * @param ke - the KeyEvent of pressing the key
         	 */
             @Override
             public void keyPressed(KeyEvent ke) {
@@ -169,12 +169,12 @@ public class SubmarineKiller extends JPanel {
                 }
                 
             }//end of the keyPressed Method
-        } );//end of the Anonymous KeyAdaper Class
+        } );//end of the Anonymous KeyAdapter Class
     }//end of the SubmarineKiller Constructor
     /**
      * paintComponent Method - Draws the current state of the game.  It draws the battleship, 
      * submarine, and DepthCharge by calling their respective draw methods.
-     * @param Graphics - the graphic context
+     * @param g - the Graphic context
      */
     @Override
     synchronized public void paintComponent(Graphics g) {
@@ -253,7 +253,6 @@ public class SubmarineKiller extends JPanel {
         /**
          * updateNewFrame Method - Updates the Battleship frame, and makes sure it does not move
          * off the screen.
-         * @param Void
          */
         synchronized void updateNewFrame() {
             if (centerX < 130) {
@@ -265,7 +264,7 @@ public class SubmarineKiller extends JPanel {
         }//end of the updateNewFrame Method for the Battleship
         /**
          * draw Method - Draws the Battleship at its location
-         * @param Graphics - the graphics context
+         * @param g - the Graphics context
          */
         synchronized void draw(Graphics g) {
             Graphics2D g2d = (Graphics2D)g;
@@ -300,7 +299,6 @@ public class SubmarineKiller extends JPanel {
         }//end of the DepthCharge Constructor
         /**
          * updateNewFrame Method - Updates the DepthCharge frame
-         * @param Void
          */
         synchronized void updateNewFrame() { 
 
@@ -333,7 +331,7 @@ public class SubmarineKiller extends JPanel {
     	 * downwards.  And then, it verifies whether it has either hit or missed the submarine.  In
     	 * either case, its state changes to not falling and reappears back under the battleshipCenterX
     	 * position in the next frame.
-    	 * @param Graphics - the graphics context
+    	 * @param g - the Graphics context
     	 * @return Void
     	 */
         synchronized void draw(Graphics g) {
@@ -351,7 +349,6 @@ public class SubmarineKiller extends JPanel {
         }//end of the draw Method for the DepthCharge Class
         /**
          * getBounds Method - Gets the rectangular bounds of the depthCharge
-         * @param Void
          * @return Rectangle - Returns the rectangular dimension of the depthCharge at the centerX and
          * centerY position.
          */
@@ -360,7 +357,6 @@ public class SubmarineKiller extends JPanel {
         }//end of the getBounds Method
         /**
          * getCollision Method - Determines whether or not the has collided with the submarine.
-         * @param Void
          * @return Boolean - Returns true, if there is a collision with the submarine; otherwise, it returns
          * false.
          */
@@ -397,7 +393,6 @@ public class SubmarineKiller extends JPanel {
         /**
          * updateNewFrame Method - Updates the position of the submarine.  For example, this method
          * moves the submarine; or when exploding, it increases the explosionFrameNumber.
-         * @param Void
          */
         synchronized void updateNewFrame() { 
             if (isExploding) {
@@ -447,7 +442,7 @@ public class SubmarineKiller extends JPanel {
          * draw Method - Draws the submarine using its centerX and centerY positions as references.  If
          * the submarine is exploding, it draws the explosion with the graphics context fillOval
          * method, setColor method to yellow and red.
-         * @param Graphics - the graphics context
+         * @param g - the Graphics context
          */
         synchronized void draw(Graphics g) {
             Graphics2D g2d = (Graphics2D) g;
@@ -484,7 +479,6 @@ public class SubmarineKiller extends JPanel {
         }//end of the draw Method for the Submarine Class
         /**
          * getBounds Method - Gets the rectangular bounds of the submarine
-         * @param Void
          * @return Rectangle - Returns the rectangular dimension of the submarine at the centerX and
          * centerY position.
          */
@@ -510,7 +504,6 @@ public class SubmarineKiller extends JPanel {
     	/**
     	 * updateNewFrame Method - Updates the centerX position of the drawn arcs that moves them across 
          * the panel.
-    	 * @param Void
     	 */
     	synchronized void updateNewFrame() {
     		if (centerX < 0) {
@@ -523,7 +516,7 @@ public class SubmarineKiller extends JPanel {
     	}//end of the updateNewFrame Method
     	/**
     	 * draw Method - Draws the two roll of waves across the panel.
-    	 * @param Graphics - the graphic context
+    	 * @param g - the Graphic context
     	 */
     	synchronized void draw(Graphics g) {
             Graphics2D g2d = (Graphics2D)g;
@@ -549,7 +542,7 @@ public class SubmarineKiller extends JPanel {
     private class CloudOne {
     	//Instance Variables
     	double centerX, centerY;
-	Color cloudColor1;
+	    Color cloudColor1;
 
     	/**
     	 * Default Cloud Constructor - Creates an instance of CloudOne class
@@ -563,7 +556,6 @@ public class SubmarineKiller extends JPanel {
     	/**
     	 * updateNewFrame Method - Updates the centerX position of CloudOne that moves it across
          * the panel.
-    	 * @param Void
     	 */
     	synchronized void updateNewFrame() {
             if (centerX < 0) {
@@ -577,7 +569,7 @@ public class SubmarineKiller extends JPanel {
     	/**
     	 * draw Method - Draws CloudOne by using the graphics context fillOval and setColor methods 
          * to fill ovals using the CloudOne's centerX and centerY positions.
-    	 * @param Graphics - the graphics context
+    	 * @param g - the Graphics context
     	 */
     	synchronized void draw(Graphics g) {
             Graphics2D g2d = (Graphics2D)g;
@@ -627,7 +619,6 @@ public class SubmarineKiller extends JPanel {
     	/**
     	 * updateNewFrame Method - Updates the centerX position of CloudTwo that moves it across the
          * panel.
-    	 * @param Void
     	 */
     	synchronized void updateNewFrame() {
             if (centerX < 0) {
@@ -639,7 +630,7 @@ public class SubmarineKiller extends JPanel {
     	/**
     	 * draw Method - Draws CloudTwo by using the graphics context fillOval and setColor methods 
          * to fill ovals using the CloudTwo's centerX and centerY positions.
-    	 * @param Graphics - the graphics context
+    	 * @param g - the Graphics context
     	 */
     	synchronized void draw(Graphics g) {
             Graphics2D g2d = (Graphics2D)g;
@@ -686,7 +677,6 @@ public class SubmarineKiller extends JPanel {
     	}//end of the Default Sun Constructor
     	/**
     	 * updateNewFrame Method - Updates the sun by slightly changing its color
-    	 * @param Void
     	 */
     	synchronized void updateNewFrame() {
     		if (sunColor == new Color(227, 197, 27)) {
@@ -697,7 +687,7 @@ public class SubmarineKiller extends JPanel {
     	}//end of the updateNewFrame Method for the Sun
     	/**
     	 * drawSun Method - Draws the sun using the graphics context setColor and fillOval methods,
-    	 * @param Graphics - the graphic context
+    	 * @param g - the Graphic context
     	 */
     	synchronized void draw(Graphics g) {
     		Graphics2D g2d = (Graphics2D)g;
@@ -712,14 +702,12 @@ public class SubmarineKiller extends JPanel {
     }//end of the Sun Class
     /**
      * getScore - Get the number of the times the depth charge has hit the submarine.
-     * @param Void
      * @return Int - Return an Integer for the number of times the depth charge has hit the 
      * submarine.
      */
     public int getScore() {return hits;}
     /**
      * getMisses Method - Get the number of times the depth charge has missed the submarine.
-     * @param Void
      * @return Int - Return an Integer for the number of times the depth charge has missed the
      * submarine.
      */
@@ -727,14 +715,12 @@ public class SubmarineKiller extends JPanel {
     /**
      * getPercentage Method - Get the percentage for the number of time the depth charge has hit
      * the submarine (i.e., hits divided by the sum of hits and and misses).
-     * @param Void
      * @return double - Return a Double for the percentage of hits.
      */
     public double getPercentage() {return (hits / ((double)hits + (double)misses));}
     /**
      * doGameOver Method - Displays the game over dialog. It JDialog to displays the results of
      * the game, and uses JOptionPane to determine whether to repeat the game or not.
-     * @param Void
      */
     public void doGameOver() {
         JOptionPane.showMessageDialog(this, "                        Your score is "+ getScore() +
@@ -759,7 +745,6 @@ public class SubmarineKiller extends JPanel {
      * doNewGame Method - Gets the default Toolkit, sets the screen size to full, creates the frame container and
      * the object of SubmarineKiller.  Adds the object of SubmarineKiller to the frame, sets it to the frame to be
      * visible, and set its default close operation.  In short, this method resets the game.
-     * @param Void
      */
     public void doNewGame() {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();	
@@ -781,7 +766,7 @@ public class SubmarineKiller extends JPanel {
      * main Method - Gets the default Toolkit, sets the screen size to full, creates the frame container and
      * the object of SubmarineKiller.  Adds the object of SubmarineKiller to the frame, sets it the frame to
      * visible, and set its default close operation.
-     * @param String[] - the command line arguments
+     * @param args - String[] representing the command line arguments
      */
     public static void main(String[] args) {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();	
